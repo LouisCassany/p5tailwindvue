@@ -7,11 +7,11 @@
 <script lang="ts" setup>
 
 import p5 from 'p5';
+import { Grid } from './arena/Grid';
+
+const grid = new Grid();
 
 const s = (p: p5) => {
-
-  let x = 100;
-  let y = 100;
 
   p.setup = () => {
     const parent = document.getElementById('sketch')!;
@@ -21,8 +21,12 @@ const s = (p: p5) => {
 
   p.draw = () => {
     p.background(0);
-    p.fill(255);
-    p.rect(x, y, 50, 50);
+    grid.update(p);
+    grid.draw(p);
+  };
+
+  p.mouseClicked = () => {
+    grid.mouseClicked(p);
   };
 };
 
