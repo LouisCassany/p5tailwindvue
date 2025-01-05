@@ -10,6 +10,10 @@ import p5 from 'p5';
 import { Grid } from './arena/Grid';
 
 const grid = new Grid();
+// Make some random cells not empty
+for (let i = 0; i < 20; i++) {
+  grid.cells[Math.floor(Math.random() * grid.cells.length)].isEmpty = false;
+}
 
 const s = (p: p5) => {
 
@@ -26,7 +30,7 @@ const s = (p: p5) => {
   };
 
   p.mouseClicked = () => {
-    grid.mouseClicked(p);
+    grid.mouseClicked();
   };
 };
 
